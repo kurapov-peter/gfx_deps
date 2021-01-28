@@ -18,5 +18,7 @@ cmake -DCMAKE_BUILD_TYPE=Debug \
     -DSKIP_UNIT_TESTS=1 \
     -DIGC_DIR=$GFX_BUILD_HOME/install/igc \
     -DGMM_DIR=$GFX_BUILD_HOME/install/gmm \
+    -DBUILD_WITH_L0=1 \
+    -DLEVEL_ZERO_ROOT=$GFX_BUILD_HOME/install/neo_loader \
     $GFX_BUILD_HOME/neo/ || exit 1
 make DESTDIR=$GFX_BUILD_HOME/install/neo install -j`nproc` || exit 1

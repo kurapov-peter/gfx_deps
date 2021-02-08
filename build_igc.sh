@@ -13,7 +13,11 @@ mkdir -p install/igc
 mkdir -p build/igc
 rm -rf install/igc/*
 
-cd build/igc || exit 1
+# fix patching
+cd llvm-project || exit 1
+git checkout -b tag llvmorg-10.0.0
+
+cd $GFX_BUILD_HOME/build/igc || exit 1
 cmake -DCMAKE_BUILD_TYPE=Debug \
     -DCMAKE_INSTALL_PREFIX=$GFX_BUILD_HOME/install/igc \
     $GFX_BUILD_HOME/igc/ || exit 1

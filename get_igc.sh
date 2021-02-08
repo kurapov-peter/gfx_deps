@@ -24,7 +24,3 @@ git clone -b release/10.x https://github.com/llvm/llvm-project llvm-project
 git clone -b ocl-open-100 https://github.com/intel/opencl-clang llvm-project/llvm/projects/opencl-clang
 git clone -b llvm_release_100 https://github.com/KhronosGroup/SPIRV-LLVM-Translator llvm-project/llvm/projects/llvm-spirv
 git clone https://github.com/intel/llvm-patches llvm_patches
-
-# fix patching
-cd llvm-project || exit 1
-git checkout -b tag llvmorg-10.0.0

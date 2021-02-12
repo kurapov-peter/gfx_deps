@@ -12,7 +12,7 @@ fi
 IGC_VERSION=1.0.5964
 
 cd $GFX_BUILD_HOME || exit 1
-git clone git@github.com:intel/intel-graphics-compiler.git igc
+git clone http://github.com/intel/intel-graphics-compiler.git igc
 cd igc || exit 1
 git checkout tags/igc-$IGC_VERSION
 

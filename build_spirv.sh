@@ -21,4 +21,4 @@ git checkout llvm_release_100
 cd $GFX_BUILD_HOME/build/spirv || exit 1
 # in-tree build
 cmake -DCMAKE_INSTALL_PREFIX=$GFX_BUILD_HOME/install/spirv -DLLVM_ENABLE_PROJECTS="clang" $GFX_BUILD_HOME/llvm-project/llvm/
-make llvm-spirv -j`nproc'
+make llvm-spirv -j`nproc`

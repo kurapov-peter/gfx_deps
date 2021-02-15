@@ -19,9 +19,14 @@ cd $GFX_BUILD_HOME/llvm-project/llvm/projects/llvm-spirv || exit 1
 git checkout llvm_release_100
 
 cd $GFX_BUILD_HOME/build/spirv || exit 1
-# in-tree build
-cmake -DCMAKE_INSTALL_PREFIX=$GFX_BUILD_HOME/install/spirv -DLLVM_ENABLE_PROJECTS="clang" $GFX_BUILD_HOME/llvm-project/llvm/
-make llvm-spirv -j`nproc`
 
-#cmake -DCMAKE_INSTALL_PREFIX=$GFX_BUILD_HOME/install/spirv -DLLVM_DIR=$GFX_BUILD_HOME/build/llvm/cmake/llvm 
-#make llvm-spirv -j`nproc`
+cmake -DLLVM_ENABLE_PROJECTS="clang" \
+    $GFX_BUILD_HOME/llvm-project/llvm/ \
+    -DLLVM_TARGETS_TO_BUILD=X86 \
+    -DCMAKE_BUILD_TYPE=Debug \
+    -DBUILD_SHARED_LIBS=OFF \
+    -DCMAKE_INSTALL_PREFIX=$GFX_BUILD_HOME/install/spirv \
+    -DLLVM_ABI_BREAKING_CHECKS=FORCE_OFF \
+    -DLLVM_ENABLE_ABI_BREAKING_CHECKS=0 
+cmake --build . --parallel 8 --target install
+

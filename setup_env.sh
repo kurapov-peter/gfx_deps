@@ -13,3 +13,5 @@ export CPATH=$GFX_BUILD_HOME/install/neo_loader/include:$CPATH
 export CPATH=$GFX_BUILD_HOME/install/spirv/include:$CPATH
 
 export PATH=$GFX_BUILD_HOME/install/spirv/bin:$PATH
+
+export PKG_CONFIG_PATH=$GFX_BUILD_HOME/install/spirv/lib/pkgconfig:$PKG_CONFIG_PATH

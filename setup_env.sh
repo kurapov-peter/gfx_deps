@@ -12,4 +12,4 @@ export LD_LIBRARY_PATH=$GFX_BUILD_HOME/install/spirv/lib:$LD_LIBRARY_PATH
 export CPATH=$GFX_BUILD_HOME/install/neo_loader/include:$CPATH
 export CPATH=$GFX_BUILD_HOME/install/spirv/include:$CPATH
 
-export PATH=$GFX_BUILD_HOME/install/spirv/bin:$CPATH
+export PATH=$GFX_BUILD_HOME/install/spirv/bin:$PATH

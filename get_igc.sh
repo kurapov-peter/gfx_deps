@@ -9,7 +9,7 @@ if [ -z $GFX_BUILD_HOME ]; then
 fi
 
 #source $scriptpath/manifest.sh
-IGC_VERSION=1.0.5964
+IGC_VERSION=1.0.6087
 
 cd $GFX_BUILD_HOME || exit 1
 git clone http://github.com/intel/intel-graphics-compiler.git igc

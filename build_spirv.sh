@@ -27,6 +27,7 @@ cmake -DLLVM_ENABLE_PROJECTS="clang" \
     -DBUILD_SHARED_LIBS=OFF \
     -DCMAKE_INSTALL_PREFIX=$GFX_BUILD_HOME/install/spirv \
     -DLLVM_ABI_BREAKING_CHECKS=FORCE_OFF \
+    -DLLVM_USE_LINKER=gold \
     -DLLVM_ENABLE_ABI_BREAKING_CHECKS=0 
 cmake --build . --parallel 8 --target install
 

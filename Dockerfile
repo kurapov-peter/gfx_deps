@@ -22,16 +22,19 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
 
 RUN mkdir -p /gfx_deps
 
-RUN bash get_igc.sh \
-	&& bash get_loader.sh \ 
-	&& bash get_neo.sh \ 
-	&& bash get_spirv.sh 
+
+# get and build llvm+spirv first (conflicts with igc)
+RUN bash get_spirv.sh
+RUN bash build_spirv.sh
+
+RUN bash get_loader.sh
+RUN bash get_neo.sh
+RUN bash get_igc.sh
 
 RUN bash build_igc.sh
 RUN bash build_gmm.sh
 RUN bash build_loader.sh
 RUN bash build_neo.sh
-RUN bash build_spirv.sh
 
 from ubuntu:20.04
 COPY --from=prepare_deps /gfx_deps/install /gfx_deps

@@ -20,14 +20,15 @@ git checkout llvm_release_100
 
 cd $GFX_BUILD_HOME/build/spirv || exit 1
 
-cmake -DLLVM_ENABLE_PROJECTS="clang" \
-    $GFX_BUILD_HOME/llvm-project/llvm/ \
+cmake  $GFX_BUILD_HOME/llvm-project/llvm/ \
     -DLLVM_TARGETS_TO_BUILD=X86 \
     -DCMAKE_BUILD_TYPE=Debug \
     -DBUILD_SHARED_LIBS=OFF \
     -DCMAKE_INSTALL_PREFIX=$GFX_BUILD_HOME/install/spirv \
     -DLLVM_ABI_BREAKING_CHECKS=FORCE_OFF \
     -DLLVM_USE_LINKER=gold \
-    -DLLVM_ENABLE_ABI_BREAKING_CHECKS=0 
+    -DLLVM_ENABLE_ABI_BREAKING_CHECKS=0 \
+    -DLLVM_SPIRV_INCLUDE_TESTS=OFF \
+    -DSPIRV_SKIP_CLANG_BUILD=ON
 cmake --build . --parallel 8 --target install
 

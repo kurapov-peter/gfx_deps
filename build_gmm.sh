@@ -18,4 +18,5 @@ cmake -DCMAKE_BUILD_TYPE=Debug \
     -DCMAKE_INSTALL_PREFIX=$GFX_BUILD_HOME/install/gmm \
     $GFX_BUILD_HOME/gmm/ || exit 1
 make install -j`nproc`
+rm -rf $GFX_BUILD_HOME/build
 echo "Done"

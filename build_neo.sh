@@ -22,3 +22,5 @@ cmake -DCMAKE_BUILD_TYPE=Debug \
     -DLEVEL_ZERO_ROOT=$GFX_BUILD_HOME/install/neo_loader \
     $GFX_BUILD_HOME/neo/ || exit 1
 make DESTDIR=$GFX_BUILD_HOME/install/neo install -j`nproc` || exit 1
+rm -rf $GFX_BUILD_HOME/build
+

@@ -16,4 +16,5 @@ rm -rf install/neo_loader/*
 cd build/neo_loader || exit 1
 cmake $GFX_BUILD_HOME/neo_loader/ -DCMAKE_INSTALL_PREFIX=$GFX_BUILD_HOME/install/neo_loader
 cmake --build . --config Debug --target install
+rm -rf $GFX_BUILD_HOME/build
 #make DESTDIR=$GFX_BUILD_HOME/install/neo_loader install -j`nproc`

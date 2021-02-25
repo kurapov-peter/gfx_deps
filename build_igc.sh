@@ -23,4 +23,5 @@ cmake -DCMAKE_BUILD_TYPE=Debug \
     $GFX_BUILD_HOME/igc/ || exit 1
 #make DESTDIR=$GFX_BUILD_HOME/install/igc install -j`nproc`
 make install -j`nproc`
+rm -rf $GFX_BUILD_HOME/build
 echo "Done"

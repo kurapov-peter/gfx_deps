@@ -31,4 +31,5 @@ cmake  $GFX_BUILD_HOME/llvm-project/llvm/ \
     -DLLVM_SPIRV_INCLUDE_TESTS=OFF \
     -DSPIRV_SKIP_CLANG_BUILD=ON
 cmake --build . --parallel 8 --target install
+rm -rf $GFX_BUILD_HOME/build
 

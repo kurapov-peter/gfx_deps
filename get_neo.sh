@@ -14,7 +14,6 @@ cd $GFX_BUILD_HOME || exit 1
 git clone https://github.com/intel/compute-runtime neo
 cd neo || exit 1
 git checkout tags/$NEO_VERSION
-git pull
 
 # Download deps
 cd $GFX_BUILD_HOME || exit 1

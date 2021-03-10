@@ -7,7 +7,9 @@ ENV GFX_BUILD_HOME=/gfx_deps
 
 ARG ENABLE_SPIRV
 
-RUN if [[ -z "${ENABLE_SPIRV}" ]] ; then echo ENABLE_SPIRV is disabled by default, enable with --build-args ENABLE_SPIRV=true ; else echo Building with spirv translator enabled ; fi
+COPY env_helpers.sh .
+RUN bash env_helpers.sh
+ENV SPV_BUILD_ENABLED=${ENABLE_SPIRV:-false}
 
 ARG IGC_VER
 ARG NEO_VER
@@ -31,10 +33,11 @@ RUN mkdir -p /gfx_deps
 
 # get and build llvm+spirv first (conflicts with igc)
 COPY get_spirv.sh .
-RUN if [[ -z "${ENABLE_SPIRV}" ]] ; then echo Skipping spirv translator download ; else bash get_spirv.sh ; fi
-
 COPY build_spirv.sh .
-RUN if [[ -z "${ENABLE_SPIRV}" ]] ; then echo Skipping spirv translator build; else bash build_spirv.sh ; fi
+COPY conditional_spirv_build.sh .
+RUN bash conditional_spirv_build.sh
+
+COPY manifest.sh .
 
 COPY get_loader.sh .
 RUN bash get_loader.sh

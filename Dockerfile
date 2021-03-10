@@ -5,6 +5,14 @@ ENV GIT_SSL_NO_VERIFY=1
 
 ENV GFX_BUILD_HOME=/gfx_deps
 
+ARG ENABLE_SPIRV
+
+RUN if [[ -z "${ENABLE_SPIRV}" ]] ; then echo ENABLE_SPIRV is disabled by default, enable with --build-args ENABLE_SPIRV=true ; else echo Building with spirv translator enabled ; fi
+
+ARG IGC_VER
+ARG NEO_VER
+ARG LOADER_VER
+
 RUN apt-get update -y && apt-get install -y --no-install-recommends \
 	build-essential \ 
 	cmake \
@@ -23,10 +31,10 @@ RUN mkdir -p /gfx_deps
 
 # get and build llvm+spirv first (conflicts with igc)
 COPY get_spirv.sh .
-RUN bash get_spirv.sh
+RUN if [[ -z "${ENABLE_SPIRV}" ]] ; then echo Skipping spirv translator download ; else bash get_spirv.sh ; fi
 
 COPY build_spirv.sh .
-RUN bash build_spirv.sh
+RUN if [[ -z "${ENABLE_SPIRV}" ]] ; then echo Skipping spirv translator build; else bash build_spirv.sh ; fi
 
 COPY get_loader.sh .
 RUN bash get_loader.sh

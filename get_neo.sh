@@ -8,12 +8,16 @@ if [ -z $GFX_BUILD_HOME ]; then
     exit 1
 fi
 
+source $scriptpath/manifest.sh
+
 cd $GFX_BUILD_HOME || exit 1
 git clone https://github.com/intel/compute-runtime neo
 cd neo || exit 1
-git checkout master
+git checkout tags/$NEO_VERSION
 git pull
 
 # Download deps
 cd $GFX_BUILD_HOME || exit 1
 git clone https://github.com/intel/gmmlib.git gmm
+cd gmm || exit 1
+git checkout tags/intel-gmmlib-$GMM_VERSION

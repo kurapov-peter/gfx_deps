@@ -8,8 +8,10 @@ if [ -z $GFX_BUILD_HOME ]; then
     exit 1
 fi
 
+source $scriptpath/manifest.sh
+
 cd $GFX_BUILD_HOME || exit 1
 git clone https://github.com/oneapi-src/level-zero.git neo_loader
 cd neo_loader || exit 1
-git checkout master
+git checkout tags/$LOADER_VERSION
 git pull

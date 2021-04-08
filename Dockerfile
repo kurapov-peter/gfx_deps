@@ -23,6 +23,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
 	libz-dev \
 	git \
 	python \
+	python3 \
 	pkg-config
 
 WORKDIR /scripts
@@ -60,8 +61,9 @@ RUN bash build_loader.sh
 COPY build_neo.sh .
 RUN bash build_neo.sh
 
-COPY setup_env.sh .
 
 from ubuntu:20.04
 COPY --from=prepare_deps /gfx_deps/install /gfx_deps
+COPY manifest.sh /scripts
+COPY setup_docker_env.sh /scripts
 

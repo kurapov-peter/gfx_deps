@@ -64,6 +64,7 @@ RUN bash build_neo.sh
 
 from ubuntu:20.04
 COPY --from=prepare_deps /gfx_deps/install /gfx_deps
-COPY manifest.sh /scripts
-COPY setup_docker_env.sh /scripts
+RUN mkdir -p /scripts
+COPY manifest.sh /scripts/.
+COPY setup_docker_env.sh /scripts/.
 

@@ -15,3 +15,5 @@ export CPATH=$GFX_BUILD_HOME/spirv/include:$CPATH
 export PATH=$GFX_BUILD_HOME/spirv/bin:$PATH
 
 export PKG_CONFIG_PATH=$GFX_BUILD_HOME/spirv/lib/pkgconfig:$PKG_CONFIG_PATH
+
+export CMAKE_PREFIX_PATH=/gfx_deps:/gfx_deps/gmm:/gfx_deps/igc:/gfx_deps/neo:/gfx_deps/neo_loader:$CMAKE_PREFIX_PATH

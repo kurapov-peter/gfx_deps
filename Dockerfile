@@ -68,3 +68,10 @@ RUN mkdir -p /scripts
 COPY manifest.sh /scripts/.
 COPY setup_docker_env.sh /scripts/.
 
+# setup build friendly env
+ARG DEBIAN_FRONTEND=noninteractive
+ENV GFX_BUILD_HOME=/gfx_deps
+RUN apt-get update -y && apt-get install -y --no-install-recommends \
+    build-essential \
+    cmake \
+    sudo

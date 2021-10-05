@@ -5,12 +5,6 @@ ENV GIT_SSL_NO_VERIFY=1
 
 ENV GFX_BUILD_HOME=/gfx_deps
 
-ARG ENABLE_SPIRV
-
-COPY env_helpers.sh .
-RUN bash env_helpers.sh
-ENV SPV_BUILD_ENABLED=${ENABLE_SPIRV:-false}
-
 ARG IGC_VER
 ARG NEO_VER
 ARG LOADER_VER
@@ -31,12 +25,6 @@ WORKDIR /scripts
 RUN echo $http_proxy
 
 RUN mkdir -p /gfx_deps
-
-# get and build llvm+spirv first (conflicts with igc)
-COPY get_spirv.sh .
-COPY build_spirv.sh .
-COPY conditional_spirv_build.sh .
-RUN bash conditional_spirv_build.sh
 
 COPY manifest.sh .
 

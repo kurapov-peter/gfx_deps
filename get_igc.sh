@@ -19,7 +19,6 @@ git checkout tags/igc-$IGC_VERSION
 # Download dependencies
 cd $GFX_BUILD_HOME || exit 1
 git clone https://github.com/intel/vc-intrinsics vc-intrinsics
-git clone -b release/10.x https://github.com/llvm/llvm-project llvm-project
-git clone -b ocl-open-100 https://github.com/intel/opencl-clang llvm-project/llvm/projects/opencl-clang
-git clone -b llvm_release_100 https://github.com/KhronosGroup/SPIRV-LLVM-Translator llvm-project/llvm/projects/llvm-spirv
-git clone https://github.com/intel/llvm-patches llvm_patches
+git clone -b llvmorg-$IGC_LLVM_VERSION https://github.com/llvm/llvm-project llvm-project
+git clone -b ocl-open-$OPENCL_CLANG_VERSION https://github.com/intel/opencl-clang llvm-project/llvm/projects/opencl-clang
+git clone -b llvm_release_$SPIRV_READER_VERSION https://github.com/KhronosGroup/SPIRV-LLVM-Translator llvm-project/llvm/projects/llvm-spirv

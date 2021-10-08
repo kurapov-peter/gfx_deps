@@ -1,7 +1,7 @@
 from ubuntu:20.04 AS prepare_deps
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV GIT_SSL_NO_VERIFY=1
+#ENV GIT_SSL_NO_VERIFY=1
 
 ENV GFX_BUILD_HOME=/gfx_deps
 
@@ -18,7 +18,16 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
 	git \
 	python \
 	python3 \
-	pkg-config
+	pkg-config \
+    wget \
+    ca-certificates \
+    ninja-build \
+    libatomic1 \
+    libatomic-ops-dev \
+    --
+
+RUN update-ca-certificates -f
+
 
 WORKDIR /scripts
 
@@ -63,3 +72,4 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     build-essential \
     cmake \
     sudo
+

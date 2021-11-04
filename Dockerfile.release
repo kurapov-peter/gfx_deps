@@ -60,7 +60,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     swig \
     pkg-config \
     libxerces-c-dev \
-    libxmlsec1-dev
+    libxmlsec1-dev \
     --
 
 ARG IGC_VERSION=1.0.7862

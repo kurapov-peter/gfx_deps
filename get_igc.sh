@@ -22,6 +22,11 @@ git clone http://github.com/intel/intel-graphics-compiler.git igc
 cd igc || exit 1
 git checkout tags/igc-$IGC_VERSION
 
+# cd $GFX_BUILD_HOME || exit 1
+# git clone https://github.com/kurapov-peter/intel-graphics-compiler.git igc
+# cd igc || exit 1
+# git checkout bsymbolic
+
 
 # Download dependencies
 cd $GFX_BUILD_HOME || exit 1
@@ -39,12 +44,14 @@ git checkout $VC_INTRINSIC_SHA
 
 
 cd $GFX_BUILD_HOME || exit 1
-git clone -b ocl-open-$OPENCL_CLANG_VERSION https://github.com/intel/opencl-clang opencl-clang
-cd opencl-clang || exit 1
+git clone -b ocl-open-$OPENCL_CLANG_VERSION https://github.com/intel/opencl-clang llvm-project/llvm/projects/opencl-clang
+cd llvm-project/llvm/projects/opencl-clang || exit 1
 git checkout $OPENCL_CLANG_SHA
+# # https://github.com/intel/opencl-clang/commit/77ae1114c7bf79d724f5129461243d9ba96a7afb
+# git cherry-pick 77ae1114c7bf79d724f5129461243d9ba96a7afb --strategy-option theirs
 
 cd $GFX_BUILD_HOME || exit 1
-git clone -b llvm_release_$SPIRV_READER_VERSION https://github.com/KhronosGroup/SPIRV-LLVM-Translator llvm-spirv
-cd llvm-spirv || exit 1
+git clone -b llvm_release_$SPIRV_READER_VERSION https://github.com/KhronosGroup/SPIRV-LLVM-Translator llvm-project/llvm/projects/llvm-spirv 
+cd llvm-project/llvm/projects/llvm-spirv || exit 1
 git checkout $SPIRV_READER_SHA
 
